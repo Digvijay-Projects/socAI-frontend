@@ -3,10 +3,19 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
+// Define the UserData interface separately for clarity and reusability
+interface UserData {
+  id: string;
+  username: string;
+  email: string;
+  credits: number;
+  // Add any other properties your user object might have
+}
+
 interface AuthContextType {
-  user: { id: string; username: string; email: string; credits: number } | null;
+  user: UserData | null; // Use UserData type here
   token: string | null;
-  login: (token: string, userData: any) => void;
+  login: (token: string, userData: UserData) => void; // Use UserData type here
   logout: () => void;
   isLoading: boolean;
 }
@@ -24,7 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (storedToken && storedUser) {
       try {
         setToken(storedToken);
-        setUser(JSON.parse(storedUser));
+        setUser(JSON.parse(storedUser) as UserData);
       } catch (e) {
         console.error("Failed to parse stored user data:", e);
         localStorage.removeItem('jwt_token');
@@ -34,7 +43,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false);
   }, []);
 
-  const login = (newToken: string, userData: any) => {
+  const login = (newToken: string, userData: UserData) => { 
     setToken(newToken);
     setUser(userData);
     localStorage.setItem('jwt_token', newToken);
