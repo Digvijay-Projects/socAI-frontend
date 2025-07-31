@@ -1,6 +1,6 @@
 // src/components/ThemeSelector.tsx
 import React from 'react';
-import { themes, Theme } from '@/lib/themes';
+import { Theme } from '@/lib/themes';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface ThemeSelectorProps {
