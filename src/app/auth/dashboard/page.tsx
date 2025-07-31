@@ -4,6 +4,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../../contexts/AuthContext'; // Adjust path based on your project structure
+import CreateContentSection from '@/components/CreateContentSection'; // Import the new component
 
 export default function DashboardPage() {
   const { user, isLoading, logout } = useAuth();
@@ -17,29 +18,40 @@ export default function DashboardPage() {
   }, [user, isLoading, router]);
 
   if (isLoading) {
-    return <div className="p-5 text-center text-gray-700">Loading user session...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-950 text-gray-300">
+        <p className="text-xl animate-pulse">Loading user session...</p>
+      </div>
+    );
   }
 
   if (!user) {
-    return null; // Should redirect, so this won't typically render
+    return null;
   }
 
   return (
-    <div className="p-5 max-w-2xl mx-auto mt-12 border border-gray-200 rounded-lg shadow-md bg-white">
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">Welcome, {user.username}!</h1>
-      <p className="text-gray-700 mb-2">Email: {user.email}</p>
-      <p className="text-gray-700 mb-4">Credits: {user.credits}</p>
-      {/* Display other user details */}
+    <div className="min-h-screen w-full bg-gray-950 text-gray-100 flex flex-col">
+      <header className="w-full bg-gray-950 py-6 px-4 sm:px-8 lg:px-12 border-b border-gray-800 shadow-lg">
+        <div className="flex justify-between items-center max-w-7xl mx-auto"> 
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2">
+              Welcome, {user.username || 'User'}!
+            </h1>
+            <p className="text-white text-lg">Email: {user.email}</p>
+            <p className="text-white text-lg">Credits: <span className="font-semibold text-yellow-400">{user.credits || 0}</span></p>
+          </div>
+          <button
+            onClick={logout}
+            className="py-2 px-5 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-950 transition duration-200 ease-in-out shadow-md"
+          >
+            Logout
+          </button>
+        </div>
+      </header>
 
-      <button
-        onClick={logout}
-        className="mt-6 py-2 px-4 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-200 ease-in-out"
-      >
-        Logout
-      </button>
-
-      <h2 className="mt-10 text-2xl font-semibold text-gray-800">Your Protected Content Here</h2>
-      <p className="text-gray-600 mt-2">This content is only visible to logged-in users. You can add more features and information here.</p>
+      <main className="flex-grow w-full">
+        <CreateContentSection />
+      </main>
     </div>
   );
 }
