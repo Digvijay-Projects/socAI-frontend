@@ -96,7 +96,7 @@ export default function PricingPage() {
           Unlock Your Creative Potential with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Flexible AI Pricing</span>
         </h1>
         <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-          Socai's unique credit system allows you to pay for exactly what you need. Our transparent pricing in US Dollars ($) offers ultimate flexibility for generating high-quality images and videos without any hidden costs.
+          Socai&apos;s unique credit system allows you to pay for exactly what you need. Our transparent pricing in US Dollars ($) offers ultimate flexibility for generating high-quality images and videos without any hidden costs.
         </p>
       </header>
 
