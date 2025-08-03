@@ -20,15 +20,15 @@ export default function Navbar() {
           height={36}
           className="rounded-full"
         />
-        <span className="text-2xl font-bold text-blue-600">Socai</span>
+        <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-1 md:mb-0">
+          Soc AI
+        </div>
       </div>
 
       <div className="hidden md:flex space-x-6">
-        <a href="#features" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">Features</a>
-        <a href="#how-it-works" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">How It Works</a>
-        <a href="#testimonials" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">Testimonials</a>
-        <a href="#pricing" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">Pricing</a>
-        <a href="#faq" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">FAQ</a>
+        <a href="/models" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">Models</a>
+        <a href="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">Pricing</a>
+        <a href="" className="text-gray-700 hover:text-blue-600 transition-colors duration-200">FAQ</a>
       </div>
 
       <div className="hidden md:flex items-center space-x-4">

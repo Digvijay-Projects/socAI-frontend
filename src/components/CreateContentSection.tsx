@@ -68,17 +68,12 @@ export default function CreateContentSection() {
   };
 
   return (
-    // Removed min-h-screen here as it's now controlled by parent `main`
-    // Removed specific bg-gray-100 as parent provides it.
-    // Adjusted padding for consistent spacing across full width
     <div className="w-full text-gray-100 py-8 px-4 sm:px-8 lg:px-12">
       <h1 className="text-4xl sm:text-5xl font-extrabold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
         Content Creation Hub
       </h1>
 
-      {/* Content wrapper with a max-width, but it's now centered within the full-width parent */}
-      <div className="max-w-5xl mx-auto space-y-12"> {/* Increased max-w for more content space */}
-        {/* Video Generation Emphasis */}
+      <div className="max-w-5xl mx-auto space-y-12"> 
         <section className={`p-6 sm:p-8 rounded-xl shadow-2xl transition-all duration-500 ease-in-out
           ${activeGenerationType === 'video' ? 'bg-gradient-to-br from-indigo-900 via-purple-900 to-fuchsia-900 scale-100 ring-2 ring-blue-500' : 'bg-gray-800 scale-[0.98] opacity-70 hover:opacity-100 hover:shadow-xl'}
         `}>
@@ -126,7 +121,6 @@ export default function CreateContentSection() {
           )}
         </section>
 
-        {/* Image Generation Area */}
         <section className={`p-6 sm:p-8 rounded-xl shadow-2xl transition-all duration-500 ease-in-out
           ${activeGenerationType === 'image' ? 'bg-gradient-to-br from-gray-800 via-zinc-800 to-stone-800 scale-100 ring-2 ring-green-500' : 'bg-gray-800 scale-[0.98] opacity-70 hover:opacity-100 hover:shadow-xl'}
         `}>
